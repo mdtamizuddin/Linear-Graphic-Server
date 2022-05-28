@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const router = express.Router()
 const userSchema = require('../Schemas/userSchema')
 const User = new mongoose.model('User', userSchema)
-const jwt = require('jsonwebtoken')
 
 router.get('/', (req, res) => {
     User.find({}, (err, data) => {
@@ -29,7 +28,6 @@ router.get('/:email', (req, res) => {
 
 router.put('/:email', (req, res) => {
     const user = req.body
-    const email = req.params.email
     const newUser = new User(req.body)
     User.findOne({ email: req.params.email }, (err, data) => {
         if (data) {
@@ -43,7 +41,7 @@ router.put('/:email', (req, res) => {
                 }
                 else {
                     const token = jwt.sign({ email: email }, process.env.ACCESS_TOKEN)
-                    res.status(200).json({ message: "New User Added" , token : token })
+                    res.status(200).json({ message: "data deleted" , token : token })
                 }
             })
         }

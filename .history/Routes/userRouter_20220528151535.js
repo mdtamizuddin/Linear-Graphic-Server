@@ -29,7 +29,6 @@ router.get('/:email', (req, res) => {
 
 router.put('/:email', (req, res) => {
     const user = req.body
-    const email = req.params.email
     const newUser = new User(req.body)
     User.findOne({ email: req.params.email }, (err, data) => {
         if (data) {

@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const router = express.Router()
 const userSchema = require('../Schemas/userSchema')
 const User = new mongoose.model('User', userSchema)
-const jwt = require('jsonwebtoken')
 
 router.get('/', (req, res) => {
     User.find({}, (err, data) => {
@@ -29,7 +28,6 @@ router.get('/:email', (req, res) => {
 
 router.put('/:email', (req, res) => {
     const user = req.body
-    const email = req.params.email
     const newUser = new User(req.body)
     User.findOne({ email: req.params.email }, (err, data) => {
         if (data) {
