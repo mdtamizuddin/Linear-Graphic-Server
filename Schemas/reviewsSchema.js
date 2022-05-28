@@ -1,7 +1,7 @@
 const { Schema } = require('mongoose')
 const dateNow = require('../dateNow')()
 
-const portfolioSchema = new Schema({
+const reviewSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -18,10 +18,14 @@ const portfolioSchema = new Schema({
         type: String,
         required: true
     },
+    photoURL: {
+        type: String,
+        required: true
+    },
     date: {
         type: String,
         default: dateNow
     }
 })
 
-module.exports = portfolioSchema
+module.exports = reviewSchema
