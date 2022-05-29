@@ -27,6 +27,7 @@ app.use('/portfolio' , require('./Routes/PortfolioRouter'))
 app.use('/review' , require('./Routes/reviewsRouter'))
 app.use('/service' , require('./Routes/ServiceRouter'))
 app.use('/users' , require('./Routes/userRouter'))
+app.use('/sendMail' , require('./Routes/sendMail'))
 
 
 app.get('/',(req , res)=>{
