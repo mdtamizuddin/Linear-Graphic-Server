@@ -1,9 +1,9 @@
 const nodemailer = require('nodemailer')
 const express = require('express');
 const { getMaxListeners } = require('../Schemas/headersSchema');
-const Routers = express.Router()
+const router = express.Router()
 
-Routers.post('/contact', (req, res) => {
+router.post('/contact', (req, res) => {
     const data = req.body
     async function main() {
         const transporter = nodemailer.createTransport({
@@ -36,3 +36,4 @@ Routers.post('/contact', (req, res) => {
 
 })
 
+module.exports = router
