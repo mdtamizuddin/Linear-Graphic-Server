@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     })
 })
 router.get('/:email', (req, res) => {
-    User.findOne({ email : req.params.email }, (err, data) => {
+    User.findOne({ email: req.params.email }, (err, data) => {
         if (err) {
             res.status(500).json({ message: "There is A Problem on Server" })
         }
@@ -25,16 +25,45 @@ router.get('/:email', (req, res) => {
         }
     })
 })
+router.put('/admin/:email', async (req, res) => {
+    const email = req.params.email
+    User.updateOne({ email: email }, {
+        $set: {
+            role : "admin"
+        }
+    }, (err) => {
+        if (err) {
+            res.status(500).json({ error: "Server Side Error" })
+        }
+        else {
+            res.status(200).json({ message: "Data was Updated" })
+        }
+    })
+})
 
+router.put('/admin-r/:email', async (req, res) => {
+    const email = req.params.email
+    User.updateOne({ email: email }, {
+        $set: {
+            role : "am-public"
+        }
+    }, (err) => {
+        if (err) {
+            res.status(500).json({ error: "Server Side Error" })
+        }
+        else {
+            res.status(200).json({ message: "Data was Updated" })
+        }
+    })
+})
 
 router.put('/:email', (req, res) => {
-    const user = req.body
     const email = req.params.email
     const newUser = new User(req.body)
     User.findOne({ email: req.params.email }, (err, data) => {
         if (data) {
             const token = jwt.sign({ email: email }, process.env.ACCESS_TOKEN)
-            res.status(200).send({ message: "user Alrady Available" , token: token })
+            res.status(200).send({ message: "user Alrady Available", token: token })
         }
         else {
             newUser.save((err) => {
@@ -43,7 +72,7 @@ router.put('/:email', (req, res) => {
                 }
                 else {
                     const token = jwt.sign({ email: email }, process.env.ACCESS_TOKEN)
-                    res.status(200).json({ message: "New User Added" , token : token })
+                    res.status(200).json({ message: "New User Added", token: token })
                 }
             })
         }
