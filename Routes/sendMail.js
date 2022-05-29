@@ -16,13 +16,13 @@ router.post('/contact', (req, res) => {
         const info = await transporter.sendMail({
             from: 'mdtomiz.official@gmail.com',
             to: 'tamizrabbi@gmail.com',
-            subject: "Linear Graphic✔",
+            subject: data.subject,
             text: "Linear Graphic ✔",
             html: `
             </div>
             <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
               <h5 style="color: rgba(7, 0, 70, 0.89); font-size: 14px;">Recived A Email From ${data.email}</h5>
-              <p>{data.message}</p>
+              <p>${data.message}</p>
               <img style="width: 200px;" src='${data.image}' alt="">
             </div>
               `,
@@ -33,7 +33,7 @@ router.post('/contact', (req, res) => {
     }
 
     main().catch(console.error);
-
+    res.status(200).send({message : "Email Send"})
 })
 
 module.exports = router
