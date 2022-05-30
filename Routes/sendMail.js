@@ -24,6 +24,7 @@ router.post('/contact', (req, res) => {
               <h5 style="color: rgba(7, 0, 70, 0.89); font-size: 14px;">Recived A Email From ${data.email}</h5>
               <p>${data.message}</p>
               <img style="width: 200px;" src='${data.image}' alt="">
+              <a href="${data.image}">${data.image}</a>
             </div>
               `,
         });
