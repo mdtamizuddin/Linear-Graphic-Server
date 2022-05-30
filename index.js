@@ -28,6 +28,8 @@ app.use('/review' , require('./Routes/reviewsRouter'))
 app.use('/service' , require('./Routes/ServiceRouter'))
 app.use('/users' , require('./Routes/userRouter'))
 app.use('/sendMail' , require('./Routes/sendMail'))
+app.use('/pricingMonthly' , require('./Routes/pricingRouter'))
+app.use('/pricingYearly' , require('./Routes/yearlyPricing'))
 
 
 app.get('/',(req , res)=>{
