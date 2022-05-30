@@ -43,7 +43,7 @@ router.put('/:id', (req, res) => {
     Service.updateOne({ '_id': req.params.id }, {
         $set: {
             name: service.name,
-            image: service.images,
+            image: service.image,
             description: service.description
         }
     }, (err) => {
