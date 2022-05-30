@@ -39,11 +39,9 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     const portfolio = req.body
-
     Portfolio.updateOne({ '_id': req.params.id }, {
         $set: {
-            name: portfolio.name,
-            images: portfolio.images
+            name: portfolio.name
         }
     }, (err) => {
         if (err) {
