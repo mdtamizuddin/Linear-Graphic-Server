@@ -9,13 +9,13 @@ router.post('/contact', (req, res) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'mdtomiz.official@gmail.com',
+                user: 'tasrif@lineargraphic.net',
                 pass: process.env.NODEMAILER_PASS,
             },
         });
         const info = await transporter.sendMail({
-            from: 'mdtomiz.official@gmail.com',
-            to: 'tamizrabbi@gmail.com',
+            from: 'tasrif@lineargraphic.net',
+            to: 'tasrif@lineargraphic.net',
             subject: data.subject,
             text: "Linear Graphic ✔",
             html: `
@@ -34,7 +34,7 @@ router.post('/contact', (req, res) => {
     }
 
     main().catch(console.error);
-    res.status(200).send({message : "Email Send"})
+    res.status(200).send({ message: "Email Send" })
 })
 
 module.exports = router
