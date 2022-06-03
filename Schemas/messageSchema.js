@@ -15,8 +15,7 @@ const messageSchema = new Schema({
         required: true
     },
     image: {
-        type: String,
-        required: true
+        type: String
     },
     date: {
         type: String,
