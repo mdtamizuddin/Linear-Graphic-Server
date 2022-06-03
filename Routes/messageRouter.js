@@ -27,6 +27,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     const newMessage = new Message(req.body)
+    console.log(newMessage);
     newMessage.save((err) => {
         if (err) {
             res.status(500).json({ message: "There is A Problem on Server" })

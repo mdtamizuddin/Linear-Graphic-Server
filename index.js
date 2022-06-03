@@ -32,7 +32,6 @@ app.use('/pricingMonthly' , require('./Routes/pricingRouter'))
 app.use('/pricingYearly' , require('./Routes/yearlyPricing'))
 app.use('/message' , require('./Routes/messageRouter'))
 
-
 app.get('/',(req , res)=>{
     res.send({message : "Server Is Running"})
 })
