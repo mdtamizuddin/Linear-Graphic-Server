@@ -17,11 +17,11 @@ router.post('/contact', (req, res) => {
             from: 'tasrif@lineargraphic.net',
             to: 'tasrif@lineargraphic.net',
             subject: data.subject,
-            text: "Linear Graphic ✔",
+            text: "Linear Graphic Tasrif ✔",
             html: `
             </div>
             <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-              <h5 style="color: rgba(7, 0, 70, 0.89); font-size: 15px;">Name: ${data.email}</h5>
+              <h5 style="color: rgba(7, 0, 70, 0.89); font-size: 15px;">Name: ${data.name}</h5>
               <h5 style="color: rgba(7, 0, 70, 0.89); font-size: 14px;">Recived A Email From ${data.email}</h5>
               <p>${data.message}</p>
               <img style="width: 200px;" src='${data.image}' alt="">
