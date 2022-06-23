@@ -31,11 +31,12 @@ app.use('/sendMail' , require('./Routes/sendMail'))
 app.use('/pricingMonthly' , require('./Routes/pricingRouter'))
 app.use('/pricingYearly' , require('./Routes/yearlyPricing'))
 app.use('/message' , require('./Routes/messageRouter'))
+app.use('/faq' , require('./Routes/faqRouter'))
 
 app.get('/',(req , res)=>{
     res.send({message : "Server Is Running"})
 })
 
 app.listen(PORT,()=>{
-    console.log(`Server Is Running On PORT ${PORT}`);
+    console.log(`Server Is Running On http://localhost:5000/${PORT}`);
 })
