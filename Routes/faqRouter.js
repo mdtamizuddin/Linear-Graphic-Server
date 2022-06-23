@@ -51,12 +51,11 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    const pricing = req.body
+    const faq = req.body
     FAQ.updateOne({ '_id': req.params.id }, {
         $set: {
-            type: pricing.type,
-            price: pricing.price,
-            services: pricing.services
+            title: faq.title,
+            desc: faq.desc
         }
     }, (err) => {
         if (err) {
