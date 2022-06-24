@@ -39,21 +39,16 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    const pricing = req.body
-    Monthly.updateOne({ '_id': req.params.id }, {
-        $set: {
-            type: pricing.type,
-            price: pricing.price,
-            service: pricing.services
-        }
-    }, (err) => {
+    const newPricing = req.body
+    const id = req.params.id
+    Monthly.findByIdAndUpdate(id , {type : newPricing.type , price : newPricing.price , service : newPricing.services},(err , data)=>{
         if (err) {
-            res.status(500).json({ message: "There is A Problem on Server" })
+            res.status(500).send(err)
         }
-        else {
-            res.status(200).json({ message: 'data update success' })
+        else{
+            res.status(200).send(data)
         }
-    })
+    } )
 })
 
 router.delete('/:id', (req, res) => {

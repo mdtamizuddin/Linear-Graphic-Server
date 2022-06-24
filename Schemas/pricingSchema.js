@@ -10,7 +10,7 @@ const priceSchema = new Schema({
         type: Number,
         required: true
     },
-    services: {
+    service: {
         type: String,
         required: true
     },
