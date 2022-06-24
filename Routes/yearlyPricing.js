@@ -1,24 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const priceSchema = require('../Schemas/pricingSchema')
 const router = express.Router()
-const priceSchema = new mongoose.Schema({
-    type: {
-        type: String,
-        required: true
-    },
-    price: {
-        type: Number,
-        required: true
-    },
-    services: {
-        type: String,
-        required: true
-    }
-})
-const YearlyPricing = new mongoose.model('YearlyPricing', priceSchema)
+
+const Yearly = new mongoose.model('Yearlypricing', priceSchema)
 
 router.get('/', (req, res) => {
-    YearlyPricing.find({}, (err, data) => {
+    Yearly.find({}, (err, data) => {
         if (err) {
             res.status(500).json({ message: "There is A Problem On Server" })
         }
@@ -28,7 +16,7 @@ router.get('/', (req, res) => {
     })
 })
 router.get('/:id', (req, res) => {
-    YearlyPricing.findOne({ '_id': req.params.id }, (err, data) => {
+    Yearly.findOne({ '_id': req.params.id }, (err, data) => {
         if (err) {
             res.status(500).json({ message: "There is A Problem on Server" })
         }
@@ -39,8 +27,8 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const newPortfolio = new YearlyPricing(req.body)
-    newPortfolio.save((err) => {
+    const newFaq = new Yearly(req.body)
+    newFaq.save((err) => {
         if (err) {
             res.status(500).json({ message: "There is A Problem on Server" })
         }
@@ -52,7 +40,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     const pricing = req.body
-    YearlyPricing.updateOne({ '_id': req.params.id }, {
+    Yearly.updateOne({ '_id': req.params.id }, {
         $set: {
             type: pricing.type,
             price: pricing.price,
@@ -69,7 +57,7 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-    YearlyPricing.deleteOne({ '_id': req.params.id }, (err) => {
+    Yearly.deleteOne({ '_id': req.params.id }, (err) => {
         if (err) {
             res.status(500).json({ message: "There is A Problem on Server" })
         }
