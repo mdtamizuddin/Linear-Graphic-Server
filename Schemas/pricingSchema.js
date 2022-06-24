@@ -13,6 +13,13 @@ const priceSchema = new Schema({
     services: {
         type: String,
         required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    popular: {
+        type: String
     }
 })
 
