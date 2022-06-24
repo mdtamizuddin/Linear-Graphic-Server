@@ -11,7 +11,7 @@ const priceSchema = new mongoose.Schema({
         required : true
     },
     services:{
-        type: Array,
+        type: String,
         required: true
     }
 })

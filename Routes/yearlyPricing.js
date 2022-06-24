@@ -2,20 +2,20 @@ const express = require('express')
 const mongoose = require('mongoose')
 const router = express.Router()
 const priceSchema = new mongoose.Schema({
-    type :{
+    type: {
         type: String,
-        required : true
+        required: true
     },
-    price :{
+    price: {
         type: Number,
-        required : true
+        required: true
     },
-    services:{
-        type: Array,
+    services: {
+        type: String,
         required: true
     }
 })
-const YearlyPricing = new mongoose.model('YearlyPricing',priceSchema)
+const YearlyPricing = new mongoose.model('YearlyPricing', priceSchema)
 
 router.get('/', (req, res) => {
     YearlyPricing.find({}, (err, data) => {
