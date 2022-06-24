@@ -2,20 +2,20 @@ const express = require('express')
 const mongoose = require('mongoose')
 const router = express.Router()
 const priceSchema = new mongoose.Schema({
-    type :{
+    type: {
         type: String,
-        required : true
+        required: true
     },
-    price :{
+    price: {
         type: Number,
-        required : true
+        required: true
     },
-    services:{
+    services: {
         type: String,
         required: true
     }
 })
-const MonthlyPricing = new mongoose.model('MonthlyPricing',priceSchema)
+const MonthlyPricing = new mongoose.model('MonthlyPricing', priceSchema)
 
 router.get('/', (req, res) => {
     MonthlyPricing.find({}, (err, data) => {
@@ -56,7 +56,7 @@ router.put('/:id', (req, res) => {
         $set: {
             type: pricing.type,
             price: pricing.price,
-            services: pricing.services
+            service: pricing.services
         }
     }, (err) => {
         if (err) {

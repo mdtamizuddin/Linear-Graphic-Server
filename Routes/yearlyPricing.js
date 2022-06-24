@@ -56,7 +56,7 @@ router.put('/:id', (req, res) => {
         $set: {
             type: pricing.type,
             price: pricing.price,
-            services: pricing.services
+            service: pricing.services
         }
     }, (err) => {
         if (err) {
