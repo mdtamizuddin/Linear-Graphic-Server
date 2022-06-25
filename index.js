@@ -33,6 +33,7 @@ app.use('/pricingYearly', require('./Routes/yearlyPricing'))
 app.use('/leadManagement', require('./Routes/leadManagement'))
 app.use('/message', require('./Routes/messageRouter'))
 app.use('/faq', require('./Routes/faqRouter'))
+app.use('/regularPricing', require('./Routes/regulaPricingROuter'))
 
 app.get('/', (req, res) => {
     res.send({ message: "Server Is Running" })
